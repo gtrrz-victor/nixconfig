@@ -13,7 +13,6 @@
     postman
     dbeaver
     lens
-    slack
-    teams
+    pamixer
   ];
 }

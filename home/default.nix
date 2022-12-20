@@ -19,5 +19,6 @@
     unzip
     zip
     docker-compose
+    pciutils
   ];
 }
