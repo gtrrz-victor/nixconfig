@@ -5,8 +5,13 @@
     ./vscode.nix
   ];
   home.packages = with pkgs; [
-    dbeaver
+    firefox
     google-chrome
+    slack
+    vscode
+    teams
+    postman
+    dbeaver
     lens
     slack
     teams
