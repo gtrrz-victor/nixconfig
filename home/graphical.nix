@@ -13,6 +13,9 @@
     postman
     dbeaver
     lens
-    pamixer
+    pavucontrol
+    brightnessctl
+    awscli2
+    spotify
   ];
 }
