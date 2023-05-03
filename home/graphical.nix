@@ -5,6 +5,7 @@
     ./vscode.nix
   ];
   home.packages = with pkgs; [
+    delta
     firefox
     google-chrome
     slack

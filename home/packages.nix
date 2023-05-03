@@ -3,6 +3,7 @@
   home.packages = with pkgs.unstable; [
     awscli2
     clamav
+    fd
     docker-compose
     inkscape
     kubectl

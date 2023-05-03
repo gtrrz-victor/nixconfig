@@ -11,7 +11,7 @@
       flake = false;
     };
   };
-  outputs = { nixpkgs, nixpkgs-unstable, home-manager, ... }:
+  outputs = { nixpkgs, nixpkgs-unstable, home-manager, repo-nnn, ... }:
     let
       users = {
         me = {
@@ -34,7 +34,7 @@
 
         # Allows you to use an unstable package with pkgs.unstable.<foo>
         overlays =
-          [ (final: prev: { unstable = pkgsForSystem { inherit system; pkgs = nixpkgs-unstable; }; }) ];
+          [ (final: prev: { unstable = pkgsForSystem { inherit system; pkgs = nixpkgs-unstable; }; inherit repo-nnn; }) ];
       };
     in
     {
