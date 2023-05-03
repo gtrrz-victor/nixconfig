@@ -1,6 +1,7 @@
 { config, pkgs, user, ... }:
 {
   imports = [
+    ./helix
     ./git.nix
     ./bash.nix
     ./zsh.nix
@@ -20,5 +21,13 @@
     zip
     docker-compose
     pciutils
+    kubectl
+    stripe-cli
+    nodejs-18_x
+    inkscape
+    mkcert
+    clamav
+    openvpn
+    tmux
   ];
 }
