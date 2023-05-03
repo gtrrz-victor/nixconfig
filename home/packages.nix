@@ -1,6 +1,6 @@
 { config, pkgs, user, ... }:
 {
-  home.packages = with pkgs; [
+  home.packages = with pkgs.unstable; [
     awscli2
     clamav
     docker-compose
@@ -15,5 +15,6 @@
     unzip
     wget
     zip
+    sd
   ];
 }

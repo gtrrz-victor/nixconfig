@@ -13,6 +13,7 @@
 
     initExtra = ''
       [ -f $HOME/.nix-profile/etc/profile.d/nix.sh ] && source $HOME/.nix-profile/etc/profile.d/nix.sh
+      export PATH=$HOME/wks/nixconfig-starter/scripts:$PATH
       export EDITOR=nvim
       export GOPATH=$HOME/go
     '';

@@ -8,6 +8,7 @@
     ./bash.nix
     ./zsh.nix
     ./nvim.nix
+    ./lsp.nix
     ./starship.nix
   ];
 

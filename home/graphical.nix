@@ -15,7 +15,6 @@
     lens
     pavucontrol
     brightnessctl
-    awscli2
     spotify
     sublime
   ];
