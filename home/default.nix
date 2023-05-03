@@ -1,6 +1,7 @@
 { config, pkgs, user, ... }:
 {
   imports = [
+    ./nnn
     ./k9s
     ./lazygit
     ./zellij
