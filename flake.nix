@@ -1,12 +1,13 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-22.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = { nixpkgs, nixpkgs-unstable, home-manager, ... }:
     let
       users = {
         me = {
@@ -23,9 +24,13 @@
           email = "docker@example.com";
         };
       };
-      pkgsForSystem = { system }: import nixpkgs {
+      pkgsForSystem = { system, pkgs ? nixpkgs }: import pkgs {
         inherit system;
         config.allowUnfree = true;
+
+        # Allows you to use an unstable package with pkgs.unstable.<foo>
+        overlays =
+          [ (final: prev: { unstable = pkgsForSystem { inherit system; pkgs = nixpkgs-unstable; }; }) ];
       };
     in
     {
@@ -33,7 +38,7 @@
         docker = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgsForSystem { system = "x86_64-linux"; };
           modules = [
-            ./home
+            ./home/default.nix
           ];
           extraSpecialArgs = {
             user = users.docker;
@@ -55,7 +60,7 @@
                 # CHANGE 'victor' TO YOUR USERNAME
                 users.victor = {
                   imports = [
-                    ./home
+                    ./home/default.nix
                     ./home/graphical.nix
                   ];
                 };
