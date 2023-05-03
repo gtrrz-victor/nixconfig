@@ -1,6 +1,10 @@
 { config, pkgs, user, ... }:
 {
   imports = [
+    ./k9s
+    ./lazygit
+    ./zellij
+    ./alacritty
     ./helix
     ./packages.nix
     ./direnv.nix
