@@ -6,6 +6,10 @@
       url = "github:nix-community/home-manager/release-22.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    repo-nnn = {
+      url = "github:jarun/nnn";
+      flake = false;
+    };
   };
   outputs = { nixpkgs, nixpkgs-unstable, home-manager, ... }:
     let
