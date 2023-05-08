@@ -1,7 +1,12 @@
-{ config, pkgs, user, ... }:
 {
+  config,
+  pkgs,
+  user,
+  ...
+}: {
   imports = [
     ./nnn
+    ./mime.nix
     ./k9s
     ./lazygit
     ./zellij
