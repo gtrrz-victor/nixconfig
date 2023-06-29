@@ -6,6 +6,7 @@
     fd
     docker-compose
     inkscape
+    imagemagick
     kubectl
     mkcert
     nodejs-18_x
