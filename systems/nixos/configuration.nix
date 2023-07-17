@@ -1,14 +1,16 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ../common/i3.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -58,10 +60,6 @@
   services.clamav.daemon.enable = true;
   services.clamav.updater.enable = true;
 
-  # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
-
   # Configure keymap in X11
   services.xserver = {
     layout = "au";
@@ -95,7 +93,7 @@
   users.users.victor = {
     isNormalUser = true;
     description = "Victor";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = ["networkmanager" "wheel" "docker"];
     shell = "/etc/profiles/per-user/victor/bin/zsh";
   };
 
@@ -109,8 +107,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -123,7 +121,19 @@
 
   # List services that you want to enable:
 
-  # Enable the OpenSSH daemon.
+  #services.xserver.videoDrivers = ["nvidia"];
+  #hardware.nvidia.modesetting.enable = true;
+  # hardware.nvidia.powerManagement.enable = false;
+  #hardware.nvidia.prime = {
+  # sync.enable = true;
+  #  offload.enable = true;
+  #  intelBusId = "PCI:0:2:0";
+  #  nvidiaBusId = "PCI:1:0:0";
+  #};
+
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;  # Enable the OpenSSH daemon.
+  
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
@@ -139,5 +149,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.11"; # Did you read the comment?
-
 }

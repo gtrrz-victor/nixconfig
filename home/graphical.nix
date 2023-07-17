@@ -3,6 +3,7 @@
   imports = [
     ./fonts.nix
     ./vscode.nix
+    ./i3
   ];
   home.packages = with pkgs; [
     delta
@@ -11,11 +12,11 @@
     slack
     vscode
     teams
+    libheif
     postman
     dbeaver
     lens
     pavucontrol
-    brightnessctl
     spotify
     sublime
   ];
